@@ -1,0 +1,14 @@
+api = "0.4"
+
+[buildpack]
+  id = "kvedurmu/ng-build-cnb"
+  homepage = "https://github.com/kvedurmu/ng-build-cnb"
+  name = "Angular Build Buildpack"
+  version = "0.0.1"
+
+[[stacks]]
+  id = "io.buildpacks.stacks.bionic"
+
+[metadata]
+  include_files = ["bin/run","bin/build","bin/detect","buildpack.toml"]
+  pre_package = "./scripts/build.sh"
