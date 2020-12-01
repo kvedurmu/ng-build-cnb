@@ -84,9 +84,9 @@ function buildpackage::create() {
   util::tools::pack::install --directory "${BIN_DIR}"
 
   pack \
-    package-buildpack "${BUILD_DIR}/buildpackage.cnb" \
+    package-buildpack "kvedurmu/ng-build-cnb" \
       --config "${ROOT_DIR}/package.toml" \
-      --format file
+      --format image
 }
 
 main "${@:-}"

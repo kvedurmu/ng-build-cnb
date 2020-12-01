@@ -1,0 +1,37 @@
+description = "A sample Builder for building Angular apps"
+
+[[buildpacks]]
+  image = "index.docker.io/kvedurmu/ng-build-cnb:0.0.1"
+  version = "0.0.1"
+
+[[buildpacks]]
+  image = "gcr.io/paketo-buildpacks/node-engine:0.1.4"
+  version = "0.1.4"
+
+[[buildpacks]]
+  image = "gcr.io/paketo-buildpacks/npm-install:0.2.3"
+  version = "0.2.3"
+
+[[buildpacks]]
+  image = "gcr.io/paketo-buildpacks/nginx:0.0.194"
+  version = "0.0.194"
+
+[[buildpacks]]
+  image = "gcr.io/paketo-community/staticfile:0.0.12"
+  version = "0.0.12"
+
+[[order]]
+
+group = [
+    { id = "paketo-buildpacks/node-engine", version="0.1.4"},
+    { id = "paketo-buildpacks/npm-install", version="0.2.3"},
+    { id = "kvedurmu/ng-build-cnb", version="0.0.1"},
+    { id = "paketo-buildpacks/nginx", version="0.0.194"},
+    { id = "paketo-community/staticfile", version="0.0.12", optional=true},
+]
+
+[stack]
+  id = "io.buildpacks.stacks.bionic"
+  build-image = "docker.io/paketobuildpacks/build:base-cnb"
+  run-image = "index.docker.io/paketobuildpacks/run:base-cnb"
+  run-image-mirrors = ["gcr.io/paketo-buildpacks/run:base-cnb"]
